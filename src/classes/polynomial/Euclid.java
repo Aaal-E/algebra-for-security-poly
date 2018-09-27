@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Euclid {
 
-    public Result euclid(List<Integer> a, List<Integer> b, int p) {
+    public Result euclid(List<Integer> f, List<Integer> g, int mod) {
         List<Integer> d = new ArrayList<>();
-        List<Integer> answerA = new ArrayList<>();
-        List<Integer> answerB = new ArrayList<>();
+        List<Integer> a = new ArrayList<>();
+        List<Integer> b = new ArrayList<>();
 
         // Do algorithm
 
 
         // Return result
-        return new Result(d, answerA, answerB);
+        return new Result(d, a, b);
     }
 
     /**
