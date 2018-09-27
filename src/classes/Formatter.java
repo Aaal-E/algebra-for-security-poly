@@ -2,7 +2,7 @@ package classes;
 import java.util.*;
 
 public class Formatter {
-    String toString(List<Integer> poly) {
+    public String toString(List<Integer> poly) {
         String result = "";
         if(poly.size()>2) {
             for(int i=poly.size()-1;i>1;i--) {
@@ -11,7 +11,7 @@ public class Formatter {
                         result = result + "+";
                     result = result + poly.get(i) + "X^" + i;
                 }
-                
+
             }
         }
         if(poly.size()>1) {
@@ -30,8 +30,8 @@ public class Formatter {
         } else result = "0";
         return result;
     }
-    
-    List<Integer> toPoly(String str){
+
+    public List<Integer> toPoly(String str){
         List<Integer> result = new ArrayList<Integer>();
         if(str.contains("{")) {
             str = str.substring(1,str.length()-1);
@@ -58,7 +58,7 @@ public class Formatter {
             int beginOfPower = 0;
             int endOfPower = 0;
             while(str.contains("^")) {
-                
+
                 beginOfPower = Integer.parseInt(str.substring(str.indexOf("^")));
                 if(str.contains("+"))
                     endOfPower = str.indexOf("+");
