@@ -50,5 +50,12 @@ public class IO {
 
         return new Command(command, argument);
     }
+    
+    /**
+     * Print a string with a linebreak at the end.
+     */
+    void print(String str) {
+        writer.println(str);
+    }
 
 }
