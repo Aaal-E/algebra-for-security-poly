@@ -40,7 +40,7 @@ public class IO {
         String argument = line.substring(line.indexOf(']') + 1).trim();
 
         // Copy command line if command is not one of the answer commands
-        List<String> noCopy = Arrays.asList("answer", "count-add", "count-mul", "answ-a", "answ-b", "answ-d");
+        List<String> noCopy = Arrays.asList("answ-q", "answ-r", "answer", "count-add", "count-mul", "answ-a", "answ-b", "answ-d");
         if (!noCopy.contains(command)) {
             writer.println(line);
         } else {
@@ -49,6 +49,13 @@ public class IO {
         }
 
         return new Command(command, argument);
+    }
+    
+    /**
+     * Print a string with a linebreak at the end.
+     */
+    void print(String str) {
+        writer.println(str);
     }
 
 }
