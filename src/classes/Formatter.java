@@ -67,11 +67,8 @@ public class Formatter {
                         endOfFirstPower = str.indexOf("-", 1);
                 else if(str.contains("+"))
                     endOfFirstPower = str.indexOf("+");
-                else if(str.contains("-"))
-                    if(str.indexOf("-") == 0)
-                        endOfFirstPower = str.indexOf("-", 1);
-                    else
-                        endOfFirstPower = str.indexOf("-");
+                else if(str.indexOf("-",1)>0)
+                    endOfPower = str.indexOf("-", 1);
                 else endOfFirstPower = str.length();
                 degree = Integer.parseInt(str.substring(beginOfFirstPower, endOfFirstPower));
             } else if(str.contains("X")) {
@@ -86,18 +83,15 @@ public class Formatter {
             String temp = "";
             while(str.contains("^")) {
                 beginOfPower = str.indexOf("^")+1;
-                if(str.contains("+") && str.contains("-"))
+                if(str.contains("+") && (str.indexOf("-",1)>0))
                     if(str.indexOf("+")<str.indexOf("-",1))
                         endOfPower = str.indexOf("+");
                     else
                         endOfPower = str.indexOf("-", 1);
                 else if(str.contains("+"))
                     endOfPower = str.indexOf("+");
-                else if(str.contains("-"))
-                    if(str.indexOf("-") == 0)
+                else if(str.indexOf("-",1)>0)
                         endOfPower = str.indexOf("-", 1);
-                    else
-                        endOfPower = str.indexOf("-");
                 else endOfPower = str.length();                
                 int power = Integer.parseInt(str.substring(beginOfPower, endOfPower));
                 temp = str.substring(0,str.indexOf("X"));
@@ -112,18 +106,15 @@ public class Formatter {
                     str = str.substring(1);
             }
             if(str.contains("X")) {
-                if(str.contains("+") && str.contains("-"))
+                if(str.contains("+") && (str.indexOf("-",1)>0))
                     if(str.indexOf("+")<str.indexOf("-",1))
                         endOfPower = str.indexOf("+");
                     else
                         endOfPower = str.indexOf("-", 1);
                 else if(str.contains("+"))
                     endOfPower = str.indexOf("+");
-                else if(str.contains("-"))
-                    if(str.indexOf("-") == 0)
-                        endOfPower = str.indexOf("-", 1);
-                    else
-                        endOfPower = str.indexOf("-");
+                else if(str.indexOf("-",1)>0)
+                    endOfPower = str.indexOf("-", 1);
                 else endOfPower = str.length();
                 
                 temp = str.substring(0,str.indexOf("X"));
