@@ -60,12 +60,19 @@ public class Formatter {
             if(str.contains("^")) {
                 int endOfFirstPower;
                 int beginOfFirstPower = str.indexOf("^")+1;
-                if(str.contains("+"))
-                endOfFirstPower = str.indexOf("+");
+                if(str.contains("+") && str.contains("-"))
+                    if(str.indexOf("+")<str.indexOf("-",1))
+                        endOfFirstPower = str.indexOf("+");
+                    else
+                        endOfFirstPower = str.indexOf("-", 1);
+                else if(str.contains("+"))
+                    endOfFirstPower = str.indexOf("+");
                 else if(str.contains("-"))
-                    endOfFirstPower = str.indexOf("-", 1);
-                else
-                endOfFirstPower = str.length();
+                    if(str.indexOf("-") == 0)
+                        endOfFirstPower = str.indexOf("-", 1);
+                    else
+                        endOfFirstPower = str.indexOf("-");
+                else endOfFirstPower = str.length();
                 degree = Integer.parseInt(str.substring(beginOfFirstPower, endOfFirstPower));
             } else if(str.contains("X")) {
                 degree = 1;
