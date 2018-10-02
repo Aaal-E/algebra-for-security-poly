@@ -3,3 +3,6 @@
 # IntelliJ
 .idea/
 *.iml
+
+# Output text file
+output.txt

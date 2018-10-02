@@ -68,7 +68,7 @@ public class Formatter {
                 else if(str.contains("+"))
                     endOfFirstPower = str.indexOf("+");
                 else if(str.indexOf("-",1)>0)
-                    endOfPower = str.indexOf("-", 1);
+                    endOfFirstPower = str.indexOf("-", 1);
                 else endOfFirstPower = str.length();
                 degree = Integer.parseInt(str.substring(beginOfFirstPower, endOfFirstPower));
             } else if(str.contains("X")) {
