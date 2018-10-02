@@ -1,0 +1,62 @@
+##################################
+# Example file + full test suite #
+# Group 35                       #
+##################################
+
+# Expected output is written on the next line prepended with '# expect', so it
+# can be parsed by the test runner. E.g.:
+# [answer] .
+# # expect [answer] the expected answer
+
+#########################
+# Polynomial arithmetic #
+#########################
+
+# Give standard representative of given polynomial
+
+[display-poly]
+
+
+################
+# Addition of two polynomials with modulo
+
+
+
+################
+# Subtraction of two polynomials with modulo
+
+
+
+################
+# Multiplication of two polynomials
+
+
+
+################
+# Long division of two polynomials
+
+
+
+################
+# Euclid's Extended Algorithm
+
+
+
+
+################
+# Equals modulo a third polynomial
+
+
+
+################
+# Check irreducibility for a polynomial
+
+
+################
+# Give irreducible polynomial of given degree
+
+###########################
+# Finite field arithmetic #
+###########################
+
+
