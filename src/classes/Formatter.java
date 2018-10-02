@@ -59,11 +59,11 @@ public class Formatter {
             int degree = 0;
             if(str.contains("^")) {
                 int endOfFirstPower;
-                int beginOfFirstPower = str.indexOf("^"+1);
+                int beginOfFirstPower = str.indexOf("^")+1;
                 if(str.contains("+"))
                 endOfFirstPower = str.indexOf("+");
                 else if(str.contains("-"))
-                    endOfFirstPower = str.indexOf("-");
+                    endOfFirstPower = str.indexOf("-", 1);
                 else
                 endOfFirstPower = str.length();
                 degree = Integer.parseInt(str.substring(beginOfFirstPower, endOfFirstPower));
