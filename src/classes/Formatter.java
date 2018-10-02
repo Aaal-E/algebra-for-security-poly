@@ -72,6 +72,7 @@ public class Formatter {
             }
             int beginOfPower = 0;
             int endOfPower = 0;
+            String temp = "";
             while(str.contains("^")) {
                 beginOfPower = Integer.parseInt(str.substring(str.indexOf("^")));
                 if(str.contains("+") && str.contains("-"))
@@ -88,6 +89,12 @@ public class Formatter {
                         endOfPower = str.indexOf("-");
                 else endOfPower = str.length();                
                 int power = Integer.parseInt(str.substring(beginOfPower, endOfPower));
+                temp = str.substring(0,str.indexOf("X"));
+                if(temp == "-")
+                    result.set(power, -1);
+                else if(temp == "")
+                    result.set(power, 1);
+                else
                 result.set(power,Integer.parseInt(str.substring(0,str.indexOf("X"))));
                 str = str.substring(endOfPower);
                 if(str.indexOf("+") == 0)
@@ -107,7 +114,14 @@ public class Formatter {
                     else
                         endOfPower = str.indexOf("-");
                 else endOfPower = str.length();
-                result.set(1, Integer.parseInt(str.substring(0,endOfPower)));
+                
+                temp = str.substring(0,str.indexOf("X"));
+                if(temp == "-")
+                    result.set(1, -1);
+                else if(temp == "")
+                    result.set(1, 1);
+                else
+                result.set(1,Integer.parseInt(str.substring(0,str.indexOf("X"))));
                 str = str.substring(endOfPower);
                 if(str.indexOf("+") == 0)
                     str = str.substring(1);
