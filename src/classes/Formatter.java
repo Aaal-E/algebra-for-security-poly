@@ -36,7 +36,9 @@ public class Formatter {
                     result = result + "+";
                 result = result + poly.get(0);
             }
-        } else result = "0";
+        } 
+        if(result == "")
+            result = "0";
         return result;
     }
 
