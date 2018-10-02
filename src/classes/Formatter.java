@@ -50,7 +50,7 @@ public class Formatter {
                 if(str.contains(","))
                     nextNum = str.indexOf(",");
                 else nextNum = str.length();
-                result.add(Integer.parseInt(str.substring(0,nextNum)));
+                result.add(0, Integer.parseInt(str.substring(0,nextNum)));
                 if(str.contains(","))
                 str = str.substring(nextNum+1);
                 else str = str.substring(nextNum);
