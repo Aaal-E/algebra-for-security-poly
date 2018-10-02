@@ -7,7 +7,7 @@ public class Formatter {
         if(poly.size()>2) {
             for(int i=poly.size()-1;i>1;i--) {
                 if(poly.get(i)!=0) {
-                    if(result != "")
+                    if(!result.isEmpty())
                         if(poly.get(i) >= 0)
                             result = result + "+";
                     if(poly.get(i) != 1)
@@ -19,7 +19,7 @@ public class Formatter {
         }
         if(poly.size()>1) {
             if(poly.get(1)!=0) {
-                if(result!="") {
+                if(!result.isEmpty()) {
                     if(poly.get(1) >= 0)
                         result = result + "+";
                 }
@@ -30,13 +30,13 @@ public class Formatter {
         }
         if(poly.size()>0) {
             if(poly.get(0)!=0) {
-                if(result!="")
+                if(!result.isEmpty())
                     if(poly.get(0) >= 0)
                         result = result + "+";
                 result = result + poly.get(0);
             }
         } 
-        if(result == "")
+        if(result.isEmpty())
             result = "0";
         return result;
     }
@@ -90,12 +90,12 @@ public class Formatter {
                 else endOfPower = str.length();                
                 int power = Integer.parseInt(str.substring(beginOfPower, endOfPower));
                 temp = str.substring(0,str.indexOf("X"));
-                if(temp == "-")
+                if(temp.equals("-"))
                     result.set(power, -1);
-                else if(temp == "")
+                else if(temp.equals(""))
                     result.set(power, 1);
                 else
-                result.set(power,Integer.parseInt(str.substring(0,str.indexOf("X"))));
+                result.set(power,Integer.parseInt(temp));
                 str = str.substring(endOfPower);
                 if(str.indexOf("+") == 0)
                     str = str.substring(1);
@@ -116,17 +116,17 @@ public class Formatter {
                 else endOfPower = str.length();
                 
                 temp = str.substring(0,str.indexOf("X"));
-                if(temp == "-")
+                if(temp.equals("-"))
                     result.set(1, -1);
-                else if(temp == "")
+                else if(temp.isEmpty())
                     result.set(1, 1);
                 else
-                result.set(1,Integer.parseInt(str.substring(0,str.indexOf("X"))));
+                result.set(1,Integer.parseInt(temp));
                 str = str.substring(endOfPower);
                 if(str.indexOf("+") == 0)
                     str = str.substring(1);
             }
-            if(str!="") {
+            if(!str.equals("")) {
                 result.set(0, Integer.parseInt(str));
             }
         }
