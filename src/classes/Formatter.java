@@ -73,14 +73,20 @@ public class Formatter {
             int beginOfPower = 0;
             int endOfPower = 0;
             while(str.contains("^")) {
-
                 beginOfPower = Integer.parseInt(str.substring(str.indexOf("^")));
-                if(str.contains("+"))
-                    endOfPower = str.indexOf("+");
+                if(str.contains("+") && str.contains("-"))
+                    if(str.indexOf("+")<str.indexOf("-",1))
+                        endOfPower = str.indexOf("+");
                     else
-                        if(str.contains("-"))
-                            endOfPower = str.indexOf("-");
-                        else endOfPower = str.length();
+                        endOfPower = str.indexOf("-", 1);
+                else if(str.contains("+"))
+                    endOfPower = str.indexOf("+");
+                else if(str.contains("-"))
+                    if(str.indexOf("-") == 0)
+                        endOfPower = str.indexOf("-", 1);
+                    else
+                        endOfPower = str.indexOf("-");
+                else endOfPower = str.length();                
                 int power = Integer.parseInt(str.substring(beginOfPower, endOfPower));
                 result.set(power,Integer.parseInt(str.substring(0,str.indexOf("X"))));
                 str = str.substring(endOfPower);
@@ -88,12 +94,19 @@ public class Formatter {
                     str = str.substring(1);
             }
             if(str.contains("X")) {
-                if(str.contains("+"))
-                endOfPower = str.indexOf("+");
+                if(str.contains("+") && str.contains("-"))
+                    if(str.indexOf("+")<str.indexOf("-",1))
+                        endOfPower = str.indexOf("+");
+                    else
+                        endOfPower = str.indexOf("-", 1);
+                else if(str.contains("+"))
+                    endOfPower = str.indexOf("+");
                 else if(str.contains("-"))
-                    endOfPower = str.indexOf("-");
-                else
-                endOfPower = str.length();
+                    if(str.indexOf("-") == 0)
+                        endOfPower = str.indexOf("-", 1);
+                    else
+                        endOfPower = str.indexOf("-");
+                else endOfPower = str.length();
                 result.set(1, Integer.parseInt(str.substring(0,endOfPower)));
                 str = str.substring(endOfPower);
                 if(str.indexOf("+") == 0)
