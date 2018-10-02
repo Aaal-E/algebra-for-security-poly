@@ -56,6 +56,7 @@ public class Formatter {
                 else str = str.substring(nextNum);
             }
         } else {
+            int degree = 0;
             if(str.contains("^")) {
                 int endOfFirstPower;
                 int beginOfFirstPower = str.indexOf("^"+1);
@@ -65,8 +66,11 @@ public class Formatter {
                     endOfFirstPower = str.indexOf("-");
                 else
                 endOfFirstPower = str.length();
-                int degree = Integer.parseInt(str.substring(beginOfFirstPower, endOfFirstPower));
-                for(int i=0;i>degree;i++) {
+                degree = Integer.parseInt(str.substring(beginOfFirstPower, endOfFirstPower));
+            } else if(str.contains("X")) {
+                degree = 1;
+            } else degree = 0;
+                for(int i=0;i<=degree;i++) {
                     result.add(0);
                 }
             }
