@@ -52,7 +52,7 @@ public class Formatter {
                     nextNum = str.indexOf(",");
                 else nextNum = str.length();
                 result.add(Integer.parseInt(str.substring(0,nextNum)));
-                str = str.substring(nextNum);
+                str = str.substring(nextNum+1);
             }
         } else {
             if(str.contains("^")) {
