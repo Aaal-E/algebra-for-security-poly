@@ -20,40 +20,43 @@
 ################
 # Addition of two polynomials with modulo
 
-
+[add-poly]
 
 ################
 # Subtraction of two polynomials with modulo
 
-
+[subtract-poly]
 
 ################
 # Multiplication of two polynomials
 
-
+[multiply-poly]
 
 ################
 # Long division of two polynomials
 
-
+[long-div-poly]
 
 ################
 # Euclid's Extended Algorithm
 
-
+[euclid-poly]
 
 
 ################
 # Equals modulo a third polynomial
 
-
+[equals-poly-mod]
 
 ################
 # Check irreducibility for a polynomial
 
+[irreducible]
 
 ################
 # Give irreducible polynomial of given degree
+
+[find-irred]
 
 ###########################
 # Finite field arithmetic #
