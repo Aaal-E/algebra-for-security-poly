@@ -8,9 +8,11 @@ public class Formatter {
             for(int i=poly.size()-1;i>1;i--) {
                 if(poly.get(i)!=0) {
                     if(result != "")
-                        result = result + "+";
-                    if(poly.get(1) != 1)
-                        result = result + poly.get(1);
+                        if(poly.get(i) < 0)
+                            result = result + "-";
+                        else result = result + "+";
+                    if(poly.get(i) != 1)
+                        result = result + poly.get(i);
                     result = result + "X^" + i;
                 }
 
@@ -18,8 +20,11 @@ public class Formatter {
         }
         if(poly.size()>1) {
             if(poly.get(1)!=0) {
-                if(result!="")
-                    result = result + "+";
+                if(result!="") {
+                    if(poly.get(1) < 0)
+                        result = result + "-";
+                    else result = result + "+";
+                }
                 if(poly.get(1) != 1)
                     result = result + poly.get(1);
                 result = result + "X";
