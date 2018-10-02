@@ -73,7 +73,7 @@ public class Formatter {
                 for(int i=0;i<=degree;i++) {
                     result.add(0);
                 }
-            }
+            
             int beginOfPower = 0;
             int endOfPower = 0;
             String temp = "";
