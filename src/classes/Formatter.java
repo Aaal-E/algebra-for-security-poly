@@ -85,7 +85,7 @@ public class Formatter {
             int endOfPower = 0;
             String temp = "";
             while(str.contains("^")) {
-                beginOfPower = str.indexOf("^");
+                beginOfPower = str.indexOf("^")+1;
                 if(str.contains("+") && str.contains("-"))
                     if(str.indexOf("+")<str.indexOf("-",1))
                         endOfPower = str.indexOf("+");
