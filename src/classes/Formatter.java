@@ -9,7 +9,9 @@ public class Formatter {
                 if(poly.get(i)!=0) {
                     if(result != "")
                         result = result + "+";
-                    result = result + poly.get(i) + "X^" + i;
+                    if(poly.get(1) != 1)
+                        result = result + poly.get(1);
+                    result = result + "X^" + i;
                 }
                 
             }
@@ -18,7 +20,9 @@ public class Formatter {
             if(poly.get(1)!=0) {
                 if(result!="")
                     result = result + "+";
-                result = result + poly.get(1) + "X";
+                if(poly.get(1) != 1)
+                    result = result + poly.get(1);
+                result = result + "X";
             }
         }
         if(poly.size()>0) {
@@ -41,6 +45,7 @@ public class Formatter {
                     nextNum = str.indexOf(",");
                 else nextNum = str.length();
                 result.add(Integer.parseInt(str.substring(0,nextNum)));
+                str = str.substring(nextNum);
             }
         } else {
             if(str.contains("^")) {
