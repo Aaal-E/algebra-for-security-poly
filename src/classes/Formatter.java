@@ -8,9 +8,8 @@ public class Formatter {
             for(int i=poly.size()-1;i>1;i--) {
                 if(poly.get(i)!=0) {
                     if(result != "")
-                        if(poly.get(i) < 0)
-                            result = result + "-";
-                        else result = result + "+";
+                        if(poly.get(i) >= 0)
+                            result = result + "+";
                     if(poly.get(i) != 1)
                         result = result + poly.get(i);
                     result = result + "X^" + i;
@@ -21,9 +20,8 @@ public class Formatter {
         if(poly.size()>1) {
             if(poly.get(1)!=0) {
                 if(result!="") {
-                    if(poly.get(1) < 0)
-                        result = result + "-";
-                    else result = result + "+";
+                    if(poly.get(1) >= 0)
+                        result = result + "+";
                 }
                 if(poly.get(1) != 1)
                     result = result + poly.get(1);
@@ -33,7 +31,8 @@ public class Formatter {
         if(poly.size()>0) {
             if(poly.get(0)!=0) {
                 if(result!="")
-                    result = result + "+";
+                    if(poly.get(0) >= 0)
+                        result = result + "+";
                 result = result + poly.get(0);
             }
         } 
@@ -62,6 +61,8 @@ public class Formatter {
                 int beginOfFirstPower = str.indexOf("^"+1);
                 if(str.contains("+"))
                 endOfFirstPower = str.indexOf("+");
+                else if(str.contains("-"))
+                    endOfFirstPower = str.indexOf("-");
                 else
                 endOfFirstPower = str.length();
                 int degree = Integer.parseInt(str.substring(beginOfFirstPower, endOfFirstPower));
@@ -77,7 +78,9 @@ public class Formatter {
                 if(str.contains("+"))
                     endOfPower = str.indexOf("+");
                     else
-                    endOfPower = str.length();
+                        if(str.contains("-"))
+                            endOfPower = str.indexOf("-");
+                        else endOfPower = str.length();
                 int power = Integer.parseInt(str.substring(beginOfPower, endOfPower));
                 result.set(power,Integer.parseInt(str.substring(0,str.indexOf("X"))));
                 str = str.substring(endOfPower);
@@ -87,6 +90,8 @@ public class Formatter {
             if(str.contains("X")) {
                 if(str.contains("+"))
                 endOfPower = str.indexOf("+");
+                else if(str.contains("-"))
+                    endOfPower = str.indexOf("-");
                 else
                 endOfPower = str.length();
                 result.set(1, Integer.parseInt(str.substring(0,endOfPower)));
