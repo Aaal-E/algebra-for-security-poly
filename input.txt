@@ -1,7 +1,7 @@
-##################################
-# Example file + full test suite #
-# Group 35                       #
-##################################
+#############################
+# Example file + test suite #
+# Group 35                  #
+#############################
 
 # Expected output is written on the next line prepended with '# expect', so it
 # can be parsed by the test runner. E.g.:
