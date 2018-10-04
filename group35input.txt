@@ -3,10 +3,11 @@
 # Group 35                  #
 #############################
 
-# Expected output is written on the next line prepended with '# expect', so it
-# can be parsed by the test runner. E.g.:
-# [answer] .
+# Expected output is written on the line prior to the answer line, prepended
+# with '# expect' so that it can be parsed by the test runner. E.g.:
+#
 # # expect [answer] the expected answer
+# [answer] .
 
 #########################
 # Polynomial arithmetic #
@@ -14,8 +15,10 @@
 
 # Give standard representative of given polynomial
 
+[mod] 2
 [display-poly]
-
+# expect [answer] null
+[answer] null
 
 ################
 # Addition of two polynomials with modulo
