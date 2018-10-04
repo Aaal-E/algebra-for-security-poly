@@ -2,13 +2,31 @@ package classes;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.List;
 
 public class ProgramController {
+
+    private int mod;
+    private String computation;
+    private boolean computationDone;
+    private List<Integer> f;
+    private List<Integer> g;
+    private List<Integer> h;
+    private String answer;
+    private String answQ;
+    private String answR;
+    private String answA;
+    private String answB;
+    private String answD;
+    private int deg;
+    private List<Integer> modPoly;
+    private List<Integer> a;
+    private List<Integer> b;
 
     /**
      * Parses the commands in the input file and writes answers to the output file.
      */
-    public void run(String inputFile, String outputFile) throws FileNotFoundException, IOException {
+    private void run(String inputFile, String outputFile) throws IOException {
         // Create IO
         Reader reader = new FileReader(inputFile);
         Writer writer = new FileWriter(outputFile);
@@ -18,6 +36,7 @@ public class ProgramController {
         Command command;
         while ((command = io.next()) != null) {
             Logger.log("processing the following command: %s", command);
+            process(command, io);
         }
 
         // Close files
@@ -25,10 +44,148 @@ public class ProgramController {
         writer.close();
     }
 
+    private void process(Command command, IO io) {
+        switch (command.command) {
+            case "mod":
+                mod = Integer.parseInt(command.argument);
+
+                // New computation, resetting all variables
+                computation = null;
+                computationDone = false;
+                f = null;
+                g = null;
+                h = null;
+                answer = null;
+                answQ = null;
+                answR = null;
+                answA = null;
+                answB = null;
+                answD = null;
+                deg = -1;
+                modPoly = null;
+                a = null;
+                b = null;
+
+                break;
+            case "display-poly":
+            case "add-poly":
+            case "subtract-poly":
+            case "multiply-poly":
+            case "long-div-poly":
+            case "euclid-poly":
+            case "equals-poly-mod":
+            case "irreducible":
+            case "find-irred":
+            case "add-table":
+            case "mult-table":
+            case "display-field":
+            case "add-field":
+            case "subtract-field":
+            case "multiply-field":
+            case "inverse-field":
+            case "division-field":
+            case "equals-field":
+            case "primitive":
+            case "find-prim":
+                computation = command.command;
+                break;
+            case "f":
+                f = Formatter.toPoly(command.argument);
+                break;
+            case "g":
+                g = Formatter.toPoly(command.argument);
+                break;
+            case "h":
+                h = Formatter.toPoly(command.argument);
+                break;
+            case "answer":
+            case "answ-q":
+            case "answ-r":
+            case "answ-a":
+            case "answ-b":
+            case "answ-d":
+                // Compute
+                computeAnswer();
+                // Print result
+                io.print(getAnswer(command.command));
+                break;
+            case "deg":
+                deg = Integer.parseInt(command.argument);
+                break;
+            case "mod-poly":
+                modPoly = Formatter.toPoly(command.argument);
+                break;
+            case "a":
+                a = Formatter.toPoly(command.argument);
+                break;
+            case "b":
+                b = Formatter.toPoly(command.argument);
+                break;
+
+        }
+    }
+
+    /**
+     * Computes the answer for a computation using the class fields data.
+     */
+    private void computeAnswer() {
+        if (computationDone) {
+            Logger.log("computeAnswer(): skipping since it has already been computed");
+            return;
+        }
+        Logger.log("computeAnswer(): computing for computation %s", computation);
+
+        switch (computation) {
+            case "display-poly":
+            case "add-poly":
+            case "subtract-poly":
+            case "multiply-poly":
+            case "long-div-poly":
+            case "euclid-poly":
+            case "equals-poly-mod":
+            case "irreducible":
+            case "find-irred":
+            case "add-table":
+            case "mult-table":
+            case "display-field":
+            case "add-field":
+            case "subtract-field":
+            case "multiply-field":
+            case "inverse-field":
+            case "division-field":
+            case "equals-field":
+            case "primitive":
+            case "find-prim":
+        }
+
+        computationDone = true;
+    }
+
+    /**
+     * Returns the answer variable corresponding to given command.
+     */
+    private String getAnswer(String command) {
+        switch (command) {
+            case "answer":
+                return answer;
+            case "answ-q":
+                return answQ;
+            case "answ-r":
+                return answR;
+            case "answ-a":
+                return answA;
+            case "answ-b":
+                return answB;
+            case "answ-d":
+                return answD;
+        }
+        throw new IllegalArgumentException("Unknown command");
+    }
+
     /**
      * Parses the command line arguments.
      */
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) throws IOException {
         // Argument default values
         String inputFile = "input.txt";
         String outputFile = "output.txt";

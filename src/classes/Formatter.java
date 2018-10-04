@@ -2,7 +2,7 @@ package classes;
 import java.util.*;
 
 public class Formatter {
-    public String toString(List<Integer> poly) {
+    public static String toString(List<Integer> poly) {
         String result = "";
         if(poly.size()>2) {
             for(int i=poly.size()-1;i>1;i--) {
@@ -41,7 +41,7 @@ public class Formatter {
         return result;
     }
 
-    public List<Integer> toPoly(String str){
+    public static List<Integer> toPoly(String str){
         List<Integer> result = new ArrayList<Integer>();
         if(str.contains("{")) {
             str = str.substring(1,str.length()-1);

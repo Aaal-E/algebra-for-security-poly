@@ -9,7 +9,7 @@ public class InputFileTest {
         // Fix working directory
 
         // Run the program
-        ProgramController.main("-v".split(" "));
+        ProgramController.main(new String[]{"-v"});
 
         // Get expected output
 

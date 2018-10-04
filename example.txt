@@ -10,56 +10,34 @@
 #                    all computations will be done modulo [mod]
 #
 # input:             polynomials/field elements should be input as a list;
-
 #                    entries are 32-bit signed integers (to be reduced mod [mod]);
-
 #                    the last entry of the list is the constant coefficient;
 #                    second to last is the coefficient of X, etc;
 #                    e.g. {0,1,2,3} represents 0X^3+1X^2+2X+3;
 #                    this should then be simplified to X^2+2X+3, see output
 #
 # output:            polynomials should be output in the standardized form
-
 #                    a_nX^n+a_{n-1}X^{n-1}+...+a_1X+a_0;
-
 #                    all a_i should be integers between 0 and [mod] - 1;
-
 #                    if the polynomial is 0, output should be 0. Else:
-
 #                    no term 0X^i should be listed, nor should 0;
-
 #                    terms 1X^i (i > 0) should be simplified to X^i.
 #                    Field elements should be given in reduced form;
-
 #                    a mod q should be the remainder of a upon division by q;
-
 #                    here q is the polynomial that defines the field
 #
-
 #                    for addition and multiplication tables, output is as follows;
-
 #                    format of answer is a matrix; { starts and } ends the matrix;
-
 #                    a , indicates a new element in the row, a ; indicates a new row;
-
 #                    the (i,j)-th entry is the sum respectively product of
-
 #                    the i-th and j-th element of F;
-
 #                    elements of F are ordered lexicographically;
-
 #                    list polynomials of lower degree first;
-
 #                    if polynomials have the same degree, look at the highest term
-
 #                    at which they differ, then list the one with lower coefficient first;
-
 #                    e.g. 3 is listed before X and X is listed before X^2;
-
 #                    X^2+2X+5 is listed before X^2+6X+2 because 2 < 3 (if [mod]>6);
-
 #                    so first list constants, then X+constants, then
-
 #                    2X+constants etc., then X^2, X^2+constants, etc.
 #
 # Polynomial arithmetic:
@@ -101,9 +79,7 @@
 # [mod-poly]:        an irreducible polynomial q; 
 #                    used to construct the field F = Z/[mod]Z [X] / (q(X))
 # [add-table]:       produces the addition table of F;
-
 # [mult-table]:      produces the multiplication table of F;
-
 # [display-field]:   give a representative of the following field element of F in standard form;
 #                    this means display the unique polynomial of degree less than 
 #                    the degree of q that represents the field element
@@ -121,9 +97,7 @@
 # [equals-field]:    test whether the following two elements of F are equal
 # [primitive]:       test whether the following field element is primitive
 # [find-prim]:       give a primitive element of F
-
 #                    NOTE: depending on the randomization algorithm you use, 
-
 #                    the output of [find-prim] may differ from the output
 #                    in this sample file
 

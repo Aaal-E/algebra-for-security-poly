@@ -63,7 +63,7 @@ public class FormatterTest {
 
 
     private void checkToString(String expected, Integer... poly) {
-        String result = new Formatter().toString(Arrays.asList(poly));
+        String result = Formatter.toString(Arrays.asList(poly));
         assertEquals(expected, result);
     }
 
@@ -121,7 +121,7 @@ public class FormatterTest {
     }
 
     private void poly(String poly, Integer... expected) {
-        List<Integer> result = new Formatter().toPoly(poly);
+        List<Integer> result = Formatter.toPoly(poly);
         assertEquals(Arrays.asList(expected), result);
     }
 }
