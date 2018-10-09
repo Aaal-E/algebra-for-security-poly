@@ -24,6 +24,7 @@ public class Divider {
                 q.add(0);
             else
                 q.add(0, temp.get(temp.size()-1)/g.get(g.size()-1));
+            temp2.clear();
             for(int j = 0; j<(temp.size()-g.size()); j++)
                 temp2.add(0);
             temp2.add(q.get(0));
