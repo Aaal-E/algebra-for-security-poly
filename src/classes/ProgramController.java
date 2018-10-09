@@ -1,6 +1,11 @@
 package classes;
 
+import classes.polynomial.Adder;
+import classes.polynomial.Divider;
+import classes.polynomial.Multiplier;
+
 import java.io.*;
+import java.text.Format;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,11 +37,18 @@ public class ProgramController {
         Writer writer = new FileWriter(outputFile);
         IO io = new IO(reader, writer);
 
-        // Process commands
-        Command command;
-        while ((command = io.next()) != null) {
-            Logger.log("processing the following command: %s", command);
-            process(command, io);
+        try {
+            // Process commands
+            Command command;
+            while ((command = io.next()) != null) {
+                Logger.log("processing the following command: %s", command);
+                process(command, io);
+            }
+        } catch (Exception e) {
+            // Make sure that files are also closed during an exception.
+            reader.close();
+            writer.close();
+            throw e;
         }
 
         // Close files
@@ -137,10 +149,32 @@ public class ProgramController {
 
         switch (computation) {
             case "display-poly":
+                answer = Formatter.toString(f);
+                break;
+
             case "add-poly":
+                answer = Formatter.toString(new Adder().add(f, g, mod));
+                break;
+
             case "subtract-poly":
+                answer = Formatter.toString(new Adder().subtract(f, g, mod));
+                break;
+
             case "multiply-poly":
+                answer = Formatter.toString(new Multiplier().multiply(f, g, mod));
+                break;
+
             case "long-div-poly":
+                Divider.Result result = new Divider().divide(f, g, mod);
+                if (result == null) {
+                    answQ = "ERROR";
+                    answR = "ERROR";
+                } else {
+                    answQ = Formatter.toString(result.q);
+                    answR = Formatter.toString(result.r);
+                }
+                break;
+
             case "euclid-poly":
             case "equals-poly-mod":
             case "irreducible":
