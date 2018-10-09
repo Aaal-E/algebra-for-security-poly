@@ -1,6 +1,9 @@
 package classes.polynomial;
 
 import java.util.List;
+
+import classes.Polynomial;
+
 import java.util.ArrayList;
 
 public class Adder {
@@ -20,6 +23,7 @@ public class Adder {
             }
         }
         //reduce?
+        Polynomial.removeLeadingZeros(result);
         return result;
     }
 
@@ -38,6 +42,7 @@ public class Adder {
             }
         }
         //reduce?
+        Polynomial.removeLeadingZeros(result);
         return result;
     }
 }
