@@ -22,6 +22,8 @@ public class Polynomial {
     }
 
     public static void removeLeadingZeros(List<Integer> polynomial) {
-
+        while (polynomial.size() > 1 && polynomial.get(polynomial.size() - 1) == 0) {
+            polynomial.remove(polynomial.size() - 1);
+        }
     }
 }
