@@ -19,7 +19,7 @@ public class Divider {
         // Do algorithm
         if(g.equals(Polynomial.ZERO))
             return null;
-        for(int i = 0; i<=f.size()-g.size(); i--) {
+        for(int i = 0; i<=f.size()-g.size(); i++) {
             
             q.add(0, temp.get(f.size()-i-1)/g.get(g.size()-i-1));
             for(int j = 0; j<i; j++)
