@@ -20,11 +20,11 @@ public class Divider {
         if(g.equals(Polynomial.ZERO))
             return null;
         for(int i = 0; i<=f.size()-g.size(); i++) {
-//            if(g.get(g.size()-1)==0)
-//                q.add(0);
-//            else
+            if(temp.size()<f.size()-i)
+                q.add(0);
+            else
                 q.add(0, temp.get(f.size()-i-1)/g.get(g.size()-1));
-            for(int j = 0; j<((f.size()-i-1)-(g.size()-1)); j++)
+            for(int j = 0; j<(temp.size()-g.size()); j++)
                 temp2.add(0);
             temp2.add(q.get(0));
             temp = adder.subtract(temp, mul.multiply(temp2, g, mod), mod);
