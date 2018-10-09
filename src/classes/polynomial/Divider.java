@@ -24,7 +24,7 @@ public class Divider {
 //                q.add(0);
 //            else
                 q.add(0, temp.get(f.size()-i-1)/g.get(g.size()-1));
-            for(int j = 0; j<i; j++)
+            for(int j = 0; j<((f.size()-i-1)-(g.size())); j++)
                 temp2.add(0);
             temp2.add(q.get(0));
             temp = adder.subtract(temp, mul.multiply(temp2, g, mod), mod);
