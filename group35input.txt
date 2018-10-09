@@ -15,30 +15,284 @@
 
 # Give standard representative of given polynomial
 
+# 0
 [mod] 2
 [display-poly]
-# expect [answer] null
-[answer] null
+[f] {0}
+# expect [answer] 0
+[answer] .
+
+# -X
+[mod] 2
+[display-poly]
+[f] {-1,0}
+# expect [answer] X
+[answer] .
+
+# X^3
+[mod] 2
+[display-poly]
+[f] {1,0,0,0}
+# expect [answer] X^3
+[answer] .
+
+# X-1
+[mod] 2
+[display-poly]
+[f] {1,-1}
+# expect [answer] X-1
+[answer] .
+
+
+# -3X^2-X+4 mod 2
+[mod] 2
+[display-poly]
+[f] {-3,-1,4}
+# expect [answer] X^2+X
+[answer] .
+
 
 ################
 # Addition of two polynomials with modulo
 
+# 0+0
+[mod] 2
 [add-poly]
+[f] {0}
+[g] {0}
+# expect [answer] 0
+[answer] .
+
+# 1+0
+[mod] 2
+[add-poly]
+[f] {1}
+[g] {0}
+# expect [answer] 1
+[answer] .
+
+# 0+1
+[mod] 2
+[add-poly]
+[f] {0}
+[g] {1}
+# expect [answer] 1
+[answer] .
+
+# 0+X
+[mod] 2
+[add-poly]
+[f] {0}
+[g] {1,0}
+# expect [answer] X
+[answer] .
+
+# X+1
+[mod] 2
+[add-poly]
+[f] {1,0}
+[g] {1}
+# expect [answer] X+1
+[answer] .
+
 
 ################
 # Subtraction of two polynomials with modulo
 
+# 0-0
+[mod] 2
 [subtract-poly]
+[f] {0}
+[g] {0}
+# expect [answer] 0
+[answer] .
+
+# 1-0
+[mod] 2
+[subtract-poly]
+[f] {1}
+[g] {0}
+# expect [answer] 1
+[answer] .
+
+# 0-1
+[mod] 2
+[subtract-poly]
+[f] {0}
+[g] {1}
+# expect [answer] -1
+[answer] .
+
+# 0-X
+[mod] 2
+[subtract-poly]
+[f] {0}
+[g] {1,0}
+# expect [answer] -X
+[answer] .
+
+# X-1
+[mod] 2
+[subtract-poly]
+[f] {1,0}
+[g] {1}
+# expect [answer] X-1
+[answer] .
 
 ################
 # Multiplication of two polynomials
 
+# 0*0
+[mod] 2
 [multiply-poly]
+[f] {0}
+[g] {0}
+# expect [answer] 0
+[answer] .
+
+# 0*1
+[mod] 2
+[multiply-poly]
+[f] {0}
+[g] {1}
+# expect [answer] 0
+[answer] .
+
+# 1*1
+[mod] 2
+[multiply-poly]
+[f] {1}
+[g] {1}
+# expect [answer] 1
+[answer] .
+
+# -1*1
+[mod] 2
+[multiply-poly]
+[f] {-1}
+[g] {1}
+# expect [answer] -1
+[answer] .
+
+# -1*-1
+[mod] 2
+[multiply-poly]
+[f] {-1}
+[g] {-1}
+# expect [answer] 1
+[answer] .
+
+# X*X
+[mod] 2
+[multiply-poly]
+[f] {1,0}
+[g] {1,0}
+# expect [answer] X^2
+[answer] .
+
+# (X+1)(X+1)
+[mod] 2
+[multiply-poly]
+[f] {1,1}
+[g] {1,1}
+# expect [answer] X^2+2X+1
+[answer] .
+
 
 ################
 # Long division of two polynomials
 
+
+# 0/0
+[mod] 2
 [long-div-poly]
+[f] {0}
+[g] {0}
+# expect [answ-q] ERROR
+[answ-q] .
+# expect [answ-r] ERROR
+[answ-r] .
+
+# 0/1
+[mod] 2
+[long-div-poly]
+[f] {0}
+[g] {1}
+# expect [answ-q] 0
+[answ-q] .
+# expect [answ-r] 0
+[answ-r] .
+
+# 1/1
+[mod] 2
+[long-div-poly]
+[f] {1}
+[g] {1}
+# expect [answ-q] 1
+[answ-q] .
+# expect [answ-r] 0
+[answ-r] .
+
+# -1/1
+[mod] 2
+[long-div-poly]
+[f] {-1}
+[g] {1}
+# expect [answ-q] 1
+[answ-q] .
+# expect [answ-r] 0
+[answ-r] .
+
+# -1/-1
+[mod] 2
+[long-div-poly]
+[f] {-1}
+[g] {-1}
+# expect [answ-q] 1
+[answ-q] .
+# expect [answ-r] 0
+[answ-r] .
+
+# X/X
+[mod] 2
+[long-div-poly]
+[f] {1,0}
+[g] {1,0}
+# expect [answ-q] 1
+[answ-q] .
+# expect [answ-r] 0
+[answ-r] .
+
+# X^2/X
+[mod] 2
+[long-div-poly]
+[f] {1,0,0}
+[g] {1,0}
+# expect [answ-q] X
+[answ-q] .
+# expect [answ-r] 0
+[answ-r] .
+
+# 1/X
+[mod] 2
+[long-div-poly]
+[f] {1}
+[g] {1,0}
+# expect [answ-q] 0
+[answ-q] .
+# expect [answ-r] 1
+[answ-r] .
+
+# X^3+2X^2-2 / X+1
+[mod] 1000
+[long-div-poly]
+[f] {1,2,0,-2}
+[g] {1,1}
+# expect [answ-q] X^2+X-1
+[answ-q] .
+# expect [answ-r] -1
+[answ-r] .
+
 
 ################
 # Euclid's Extended Algorithm
