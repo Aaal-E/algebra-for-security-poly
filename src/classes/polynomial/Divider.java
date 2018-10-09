@@ -21,7 +21,7 @@ public class Divider {
             return null;
         for(int i = 0; i<=f.size()-g.size(); i++) {
             if(temp.size()<f.size()-i)
-                q.add(0);
+                q.add(0,0);
             else
                 q.add(0, temp.get(temp.size()-1)/g.get(g.size()-1));
             temp2.clear();
