@@ -3,6 +3,8 @@ package classes.polynomial;
 import java.util.ArrayList;
 import java.util.List;
 
+import classes.Polynomial;
+
 
 
 public class Divider {
@@ -15,6 +17,8 @@ public class Divider {
         List<Integer> temp = new ArrayList<>(f);
         List<Integer> temp2 = new ArrayList<>();
         // Do algorithm
+        if(g.equals(Polynomial.ZERO))
+            return null;
         for(int i = 0; i<=f.size()-g.size(); i--) {
             
             q.add(0, temp.get(f.size()-i)/g.get(g.size()-i));
