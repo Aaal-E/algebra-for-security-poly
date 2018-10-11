@@ -22,7 +22,7 @@ public class Adder {
                 result.add(g.get(i));
             }
         }
-        //reduce?
+        result = Polynomial.reduce(result, mod);
         Polynomial.removeLeadingZeros(result);
         return result;
     }
@@ -41,7 +41,7 @@ public class Adder {
                 result.add(-g.get(i));
             }
         }
-        //reduce?
+        result = Polynomial.reduce(result, mod);
         Polynomial.removeLeadingZeros(result);
         return result;
     }

@@ -24,14 +24,17 @@ public class Divider {
                 q.add(0,0);
             else
                 q.add(0, temp.get(temp.size()-1)/g.get(g.size()-1));
+            
             temp2.clear();
             for(int j = 0; j<(temp.size()-g.size()); j++)
                 temp2.add(0);
             temp2.add(q.get(0));
             temp = adder.subtract(temp, mul.multiply(temp2, g, mod), mod);
+            
         }
         r = adder.subtract(f, mul.multiply(q, g, mod), mod);
-        //reduce
+        q = Polynomial.reduce(q, mod);
+        r = Polynomial.reduce(r, mod);
         // Return result
         return new Result(q, r);
     }

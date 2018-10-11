@@ -26,4 +26,11 @@ public class Polynomial {
             polynomial.remove(polynomial.size() - 1);
         }
     }
+    
+    public static List<Integer> reduce(List<Integer> polynomial, int mod){
+        for(int i=0;i<polynomial.size();i++) {
+            polynomial.set(i, polynomial.get(i)%mod);
+        }
+        return polynomial;
+    }
 }

@@ -3,6 +3,8 @@ package classes.polynomial;
 import java.util.ArrayList;
 import java.util.List;
 
+import classes.Polynomial;
+
 public class Multiplier {
     public List<Integer> multiply(List<Integer> f, List<Integer> g, int mod) {
         List<Integer> result = new ArrayList<Integer>(); 
@@ -15,7 +17,7 @@ public class Multiplier {
                 result.set(i+j, result.get(i+j)+f.get(i)*g.get(j));
             }
         }
-        //reduce
+        result = Polynomial.reduce(result, mod);
         return result;
     }
 }
