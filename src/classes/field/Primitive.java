@@ -41,9 +41,11 @@ public class Primitive {
     }
     
     public List<Integer> findPrimitive(int degree, List<Integer> characteristic, int mod){
-        List<Integer> a = Field.random(degree, characteristic, mod);
+        List<Integer> a = Polynomial.random(degree, mod);
+        Field.reduce(a, characteristic, mod);
         while(!isPrimitive(a, characteristic, mod))
-            a = Field.random(degree, characteristic, mod);
+            a = Polynomial.random(degree, mod);
+            Field.reduce(a, characteristic, mod);
         return a;
     }
     //if 
