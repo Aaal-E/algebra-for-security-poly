@@ -20,7 +20,7 @@ public class Field {
         
         if(degree >= characteristic.size()-1)
             return null;
-        for(int i=0; i<degree; i++) {
+        for(int i=0; i<degree+1; i++) {
             result.add((int) Math.floor((Math.random()*mod)));
         }
         
