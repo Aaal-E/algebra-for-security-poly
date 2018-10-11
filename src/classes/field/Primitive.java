@@ -2,6 +2,8 @@ package classes.field;
 
 import java.util.List;
 
+import classes.Field;
+
 public class Primitive {
     /*Input: Field F of order q and prime divisors p1, . . . pk of q - 1 and a in F
     Output: ‘true’ if a is primitive, ‘false’ otherwise
@@ -18,5 +20,12 @@ public class Primitive {
             i++;
         }
         return i>n;
+    }
+    
+    public List<Integer> findPrimitive(int degree, List<Integer> characteristic, int mod){
+        List<Integer> a = Field.random(degree, characteristic, mod);
+        while(!isPrimitive(a, characteristic, mod))
+            a = Field.random(degree, characteristic, mod);
+        return a;
     }
 }
