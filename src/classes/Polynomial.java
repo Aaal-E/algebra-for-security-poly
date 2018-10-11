@@ -27,6 +27,17 @@ public class Polynomial {
         }
     }
     
+    public static List<Integer> random(int degree, int mod){
+        List<Integer> result = new ArrayList<>();
+        
+        for(int i=0; i<degree+1; i++) {
+            result.add((int) Math.floor((Math.random()*mod)));
+        }
+        if(result.get(result.size()-1) == 0)
+            result.set(result.size()-1, 1);
+        return result;
+    }
+    
     public static List<Integer> reduce(List<Integer> polynomial, int mod){
         for(int i=0;i<polynomial.size();i++) {
             polynomial.set(i, polynomial.get(i)%mod);

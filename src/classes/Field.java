@@ -15,15 +15,5 @@ public class Field {
         return polynomial;
     }
     
-    public static List<Integer> random(int degree, List<Integer> characteristic, int mod){
-        List<Integer> result = new ArrayList<>();
-        
-        if(degree >= characteristic.size()-1)
-            return null;
-        for(int i=0; i<degree+1; i++) {
-            result.add((int) Math.floor((Math.random()*mod)));
-        }
-        
-        return result;
-    }
+    
 }

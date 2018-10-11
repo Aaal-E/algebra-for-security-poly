@@ -3,6 +3,7 @@ package classes.field;
 import java.util.List;
 
 import classes.Field;
+import classes.Polynomial;
 
 public class Primitive {
     /*Input: Field F of order q and prime divisors p1, . . . pk of q - 1 and a in F
@@ -23,9 +24,11 @@ public class Primitive {
     }
     
     public List<Integer> findPrimitive(int degree, List<Integer> characteristic, int mod){
-        List<Integer> a = Field.random(degree, characteristic, mod);
+        List<Integer> a = Polynomial.random(degree, mod);
+        Field.reduce(a, characteristic, mod);
         while(!isPrimitive(a, characteristic, mod))
-            a = Field.random(degree, characteristic, mod);
+            a = Polynomial.random(degree, mod);
+            Field.reduce(a, characteristic, mod);
         return a;
     }
 }

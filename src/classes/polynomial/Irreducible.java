@@ -36,7 +36,10 @@ public class Irreducible {
 
 
     public List<Integer> findIrreducible(int deg, int mod) {
-
-        return null;
+        List<Integer> result = Polynomial.random(deg, mod);
+        if(isIrreducible(result, mod))
+            return result;
+        else
+            return findIrreducible(deg, mod);
     }
 }
