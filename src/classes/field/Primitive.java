@@ -28,7 +28,7 @@ public class Primitive {
         	for ( int d = 1; d <= j/2; d++)
         		if( j % d == 0)
         		  divisorCount ++;
-        	if(divisorCount == 2)
+        	if(divisorCount == 1)
         		primeDivisors ++;
         }
         	//getting  how many prime divisors we have to divide by
