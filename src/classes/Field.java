@@ -1,6 +1,5 @@
 package classes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import classes.polynomial.Divider;
@@ -13,6 +12,10 @@ public class Field {
         polynomial = Polynomial.reduce(polynomial, mod);
         polynomial = div.divide(polynomial, characteristic, mod).r;
         return polynomial;
+    }
+    
+    public boolean equals(List<Integer> f, List<Integer> g, List<Integer> characteristic, int mod) {
+        return reduce(f, characteristic, mod).equals(reduce(g, characteristic, mod));
     }
     
     
