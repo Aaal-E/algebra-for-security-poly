@@ -10,6 +10,7 @@ import classes.polynomial.*;
 public class Arithmetic {
     Adder adder = new Adder();
     Multiplier multiplier = new Multiplier();
+    Inverse inverse = new Inverse();
 
     
     public List<Integer> multiply(List<Integer> f, List<Integer> g, List<Integer> characteristic, int mod) {
@@ -42,5 +43,7 @@ public class Arithmetic {
         return result;
     }
     
-    
+    public List<Integer> div(List<Integer> f, List<Integer> g, List<Integer> characteristic, int mod){
+        return multiplier.multiply(f, inverse.findInverse(g, characteristic, mod), mod);
+    }
 }
