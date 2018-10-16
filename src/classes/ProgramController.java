@@ -155,7 +155,7 @@ public class ProgramController {
 
         switch (computation) {
             case "display-poly":
-                answer = Formatter.toString(f);
+                answer = Formatter.toString(Polynomial.reduce(f, mod));
                 break;
 
             case "add-poly":
