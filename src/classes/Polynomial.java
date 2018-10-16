@@ -40,7 +40,9 @@ public class Polynomial {
     
     public static List<Integer> reduce(List<Integer> polynomial, int mod){
         for(int i=0;i<polynomial.size();i++) {
-            polynomial.set(i, polynomial.get(i)%mod);
+            int temp = polynomial.get(i)%mod;
+            temp = (temp<0)? temp + mod: temp;
+            polynomial.set(i, temp);
         }
         return polynomial;
     }
