@@ -1,7 +1,13 @@
 package classes;
 
+import classes.field.Arithmetic;
+import classes.field.Inverse;
+import classes.field.Primitive;
 import classes.polynomial.Adder;
 import classes.polynomial.Divider;
+import classes.polynomial.Euclid;
+import classes.polynomial.Euclid.Result;
+import classes.polynomial.Irreducible;
 import classes.polynomial.Multiplier;
 
 import java.io.*;
@@ -176,20 +182,50 @@ public class ProgramController {
                 break;
 
             case "euclid-poly":
+                
+                Result r = new Euclid().euclid(f,g,mod);
+                answA = Formatter.toString(r.a);
+                answB = Formatter.toString(r.b);
+                answD = Formatter.toString(r.d);
+                break;
             case "equals-poly-mod":
+                answer = (Field.polyequals(f,g,h,mod))? "TRUE":"FALSE";
+                break;
             case "irreducible":
+                answer = (new Irreducible().isIrreducible(f, mod))? "TRUE":"FALSE";
+                break;
             case "find-irred":
+                answer = Formatter.toString(new Irreducible().findIrreducible(deg, mod));
+                break;
             case "add-table":
+                
             case "mult-table":
             case "display-field":
+                answer = Formatter.toString(Field.reduce(f, modPoly, mod));
+                break;
             case "add-field":
+                answer = Formatter.toString(new Arithmetic().add(f, g, modPoly, mod));
+                break;
             case "subtract-field":
+                answer = Formatter.toString(new Arithmetic().subtract(f, g, modPoly, mod));
+                break;
             case "multiply-field":
+                answer = Formatter.toString(new Arithmetic().multiply(f, g, modPoly, mod));
+                break;
             case "inverse-field":
+                answer = Formatter.toString(new Inverse().findInverse(f, modPoly, mod));
+                break;
             case "division-field":
+                answer = Formatter.toString(new Arithmetic().div(f, g, modPoly, mod));
+                break;
             case "equals-field":
+                answer = (Field.polyequals(f,g,modPoly,mod))? "TRUE":"FALSE";
+                break;
             case "primitive":
+                answer = (new Primitive().isPrimitive(f, modPoly, mod))? "TRUE":"FALSE";
+                break;
             case "find-prim":
+                answer = Formatter.toString(new Primitive().findPrimitive(modPoly, mod));
         }
 
         computationDone = true;

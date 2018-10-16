@@ -33,8 +33,8 @@ public class Polynomial {
         for(int i=0; i<degree+1; i++) {
             result.add((int) Math.floor((Math.random()*mod)));
         }
-        if(result.get(result.size()-1) == 0)
-            result.set(result.size()-1, 1);
+//        if(result.get(result.size()-1) == 0)
+//            result.set(result.size()-1, 1);
         return result;
     }
     

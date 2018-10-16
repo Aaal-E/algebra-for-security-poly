@@ -11,7 +11,7 @@ public class Inverse {
     Euclid euclid = new Euclid();
     Multiplier multiplier = new Multiplier();
     
-    List<Integer> findInverse(List<Integer> element, List<Integer> characteristic, int mod){
+    public List<Integer> findInverse(List<Integer> element, List<Integer> characteristic, int mod){
         classes.polynomial.Euclid.Result result = euclid.euclid(element, characteristic, mod);
         List<Integer> temp = new ArrayList<>();
         List<Integer> modlist = new ArrayList<Integer>(Arrays.asList(mod));

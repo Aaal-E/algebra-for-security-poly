@@ -40,7 +40,8 @@ public class Primitive {
         return i>primeDivisors;
     }
     
-    public List<Integer> findPrimitive(int degree, List<Integer> characteristic, int mod){
+    public List<Integer> findPrimitive(List<Integer> characteristic, int mod){
+        int degree = characteristic.size();
         List<Integer> a = Polynomial.random(degree, mod);
         Field.reduce(a, characteristic, mod);
         while(!isPrimitive(a, characteristic, mod))
