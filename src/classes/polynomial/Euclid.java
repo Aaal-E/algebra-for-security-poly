@@ -8,25 +8,25 @@ import classes.Polynomial;
 public class Euclid {
 
     public Result euclid(List<Integer> f, List<Integer> g, int mod) {
-        List<Integer> d = new ArrayList<>();
-        List<Integer> a = new ArrayList<>();
-        List<Integer> b = new ArrayList<>();
+        List<Integer> d;
+        List<Integer> a;
+        List<Integer> b;
         List<Integer> f_ = new ArrayList<>(f);
         List<Integer> g_ = new ArrayList<>(g);
-        List<Integer> a1 = new ArrayList<>(Polynomial.ONE);
-        List<Integer> b1 = new ArrayList<>(Polynomial.ZERO);
-        List<Integer> a2 = new ArrayList<>(Polynomial.ZERO);
-        List<Integer> b2 = new ArrayList<>(Polynomial.ONE);
-        List<Integer> a3 = new ArrayList<>(Polynomial.ZERO);
-        List<Integer> b3 = new ArrayList<>(Polynomial.ONE);
+        List<Integer> a1 = Polynomial.ONE;
+        List<Integer> b1 = Polynomial.ZERO;
+        List<Integer> a2 = Polynomial.ZERO;
+        List<Integer> b2 = Polynomial.ONE;
+        List<Integer> a3;
+        List<Integer> b3;
         
         Divider divider = new Divider();
         Adder adder = new Adder();
         Multiplier multiplier = new Multiplier();
-        
+
         // Do algorithm
-        while (!g_.equals(Polynomial.ZERO)) {
-            classes.polynomial.Divider.Result temp = divider.divide(f_, g_, mod);
+        while (!Polynomial.isZero(g_)) {
+            Divider.Result temp = divider.divide(f_, g_, mod);
             f_ = g_;
             g_ = temp.r;
             a3 = adder.subtract(a1, multiplier.multiply(temp.q, a2, mod), mod);
@@ -36,7 +36,10 @@ public class Euclid {
             a2 = a3;
             b2 = b3;
         }
-        d = f_;
+        d = Polynomial.reduce(f_, mod);
+        a = Polynomial.reduce(a1, mod);
+        b = Polynomial.reduce(b1, mod);
+
         // Return result
         return new Result(d, a, b);
     }

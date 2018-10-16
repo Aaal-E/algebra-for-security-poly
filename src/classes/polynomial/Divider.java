@@ -1,6 +1,7 @@
 package classes.polynomial;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import classes.Polynomial;
@@ -11,6 +12,10 @@ public class Divider {
     Adder adder = new Adder();
     Multiplier mul = new Multiplier();
     public Result divide(List<Integer> f, List<Integer> g, int mod) {
+        // For safety make unmodifiable
+        f = Collections.unmodifiableList(f);
+        g = Collections.unmodifiableList(g);
+
 
         List<Integer> q = new ArrayList<>();
         List<Integer> r = new ArrayList<>();
