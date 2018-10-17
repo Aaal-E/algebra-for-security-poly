@@ -42,6 +42,8 @@ public class Primitive {
     
     public List<Integer> findPrimitive(List<Integer> characteristic, int mod){
         int degree = characteristic.size();
+        //for the random part, we have to account for 0, when you generate numbers
+        // (as in skip it)
         List<Integer> a = Polynomial.random(degree, mod);
         Field.reduce(a, characteristic, mod);
         while(!isPrimitive(a, characteristic, mod))
