@@ -3,6 +3,7 @@ package classes;
 import classes.field.Arithmetic;
 import classes.field.Inverse;
 import classes.field.Primitive;
+import classes.field.TableGenerator;
 import classes.polynomial.Adder;
 import classes.polynomial.Divider;
 import classes.polynomial.Euclid;
@@ -11,8 +12,6 @@ import classes.polynomial.Irreducible;
 import classes.polynomial.Multiplier;
 
 import java.io.*;
-import java.text.Format;
-import java.util.Arrays;
 import java.util.List;
 
 public class ProgramController {
@@ -198,31 +197,34 @@ public class ProgramController {
                 answer = Formatter.toString(new Irreducible().findIrreducible(deg, mod));
                 break;
             case "add-table":
-                
+                answer = Formatter.tableToString(new TableGenerator().createAddTable(modPoly, mod));
+                break;
             case "mult-table":
+                answer = Formatter.tableToString(new TableGenerator().createMulTable(modPoly, mod));
+                break;
             case "display-field":
-                answer = Formatter.toString(Field.reduce(f, modPoly, mod));
+                answer = Formatter.toString(Field.reduce(a, modPoly, mod));
                 break;
             case "add-field":
-                answer = Formatter.toString(new Arithmetic().add(f, g, modPoly, mod));
+                answer = Formatter.toString(new Arithmetic().add(a, b, modPoly, mod));
                 break;
             case "subtract-field":
-                answer = Formatter.toString(new Arithmetic().subtract(f, g, modPoly, mod));
+                answer = Formatter.toString(new Arithmetic().subtract(a, b, modPoly, mod));
                 break;
             case "multiply-field":
-                answer = Formatter.toString(new Arithmetic().multiply(f, g, modPoly, mod));
+                answer = Formatter.toString(new Arithmetic().multiply(a, b, modPoly, mod));
                 break;
             case "inverse-field":
-                answer = Formatter.toString(new Inverse().findInverse(f, modPoly, mod));
+                answer = Formatter.toString(new Inverse().findInverse(a, modPoly, mod));
                 break;
             case "division-field":
-                answer = Formatter.toString(new Arithmetic().div(f, g, modPoly, mod));
+                answer = Formatter.toString(new Arithmetic().div(a, b, modPoly, mod));
                 break;
             case "equals-field":
-                answer = (Field.polyequals(f,g,modPoly,mod))? "TRUE":"FALSE";
+                answer = (Field.polyequals(a,b,modPoly,mod))? "TRUE":"FALSE";
                 break;
             case "primitive":
-                answer = (new Primitive().isPrimitive(f, modPoly, mod))? "TRUE":"FALSE";
+                answer = (new Primitive().isPrimitive(a, modPoly, mod))? "TRUE":"FALSE";
                 break;
             case "find-prim":
                 answer = Formatter.toString(new Primitive().findPrimitive(modPoly, mod));

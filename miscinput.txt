@@ -1,0 +1,8 @@
+
+# X^2+1, X^3
+[mod] 7
+[euclid-poly]
+[f] {1,0,1}
+[g] {1,0,0,0}
+# expect [answ-d] X
+[answ-d] .

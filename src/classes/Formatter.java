@@ -139,7 +139,33 @@ public class Formatter {
         return result;
     }
 
-    public static String fieldToString(List<List<List<Integer>>> field) {
-        return "";
+    public static String tableToString(List<List<List<Integer>>> table) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("{");
+
+        boolean firstRow = true;
+        for (List<List<Integer>> row : table) {
+            // Join string
+            if (!firstRow) {
+                builder.append("; ");
+            } else {
+                firstRow = false;
+            }
+
+            boolean firstCell = true;
+            for (List<Integer> cell : row) {
+                // Join string
+                if (!firstCell) {
+                    builder.append(", ");
+                } else {
+                    firstCell = false;
+                }
+
+                builder.append(toString(cell));
+            }
+        }
+
+        builder.append("}");
+        return builder.toString();
     }
 }

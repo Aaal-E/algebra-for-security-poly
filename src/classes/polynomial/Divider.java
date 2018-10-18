@@ -55,5 +55,10 @@ public class Divider {
             this.q = q;
             this.r = r;
         }
+
+        @Override
+        public String toString() {
+            return q.toString() + " " + r.toString();
+        }
     }
 }

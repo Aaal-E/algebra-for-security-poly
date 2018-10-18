@@ -19,4 +19,8 @@ public class Inverse {
         
         return multiplier.multiply(result.a, temp, mod);
     }
+
+    public int findInverse(int f, int mod) {
+        return 0;
+    }
 }
