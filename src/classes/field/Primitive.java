@@ -44,6 +44,9 @@ public class Primitive {
         int degree = characteristic.size();
         //for the random part, we have to account for 0, when you generate numbers
         // (as in skip it)
+        
+        //TODO check the polynomial we get: if it is redducible, return error 
+        // ->look for similar "error" messages in other methods
         List<Integer> a = Polynomial.random(degree, mod);
         Field.reduce(a, characteristic, mod);
         while(!isPrimitive(a, characteristic, mod))
