@@ -16,7 +16,7 @@ public class Divider {
     	
     	int aux;
     	
-    	// b = the mod ( so finding as + bt = 1, where s is the mult inverse mod "mod")
+    	// b = the mod ( so finding as + bt = 1, where t is the mult inverse mod "mod")
     	
     	if (a < b) {
     		
@@ -41,9 +41,13 @@ public class Divider {
     	
     	d = r;
     	
-    	//give the multiplicative inverse of a, which is t, since a >=b.
-    	return s;
+    	if (t < 0) {
+    		
+    		
+    	}
     	
+    	//give the multiplicative inverse of a, which is t, since a >=b.
+    	return t % a;
     }
     
     public Result divide(List<Integer> f, List<Integer> g, int mod) {
