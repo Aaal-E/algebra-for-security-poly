@@ -11,6 +11,41 @@ import classes.Polynomial;
 public class Divider {
     Adder adder = new Adder();
     Multiplier mul = new Multiplier();
+    
+    public int EEA (int a, int b) {
+    	
+    	int aux;
+    	
+    	// b = the mod ( so finding as + bt = 1, where s is the mult inverse mod "mod")
+    	
+    	if (a < b) {
+    		
+    		aux = a;
+    	    a = b;
+    	    b = aux;
+    	}    
+    
+    	int r = a, r1 = b, s = 1, s1 = 0, t = 0, t1 = 1, r2, d, q;
+    	
+    	while ( r1!= 0) {
+    		q = Math.floorDiv(r, r1);
+    		r2 = r % r1;
+    		
+    		r = r1;
+    		s = s1;
+    		t = t1;
+    		r1 = r2;
+    		s1 = s - s1*q;
+    		t1 = t - t1*q;	
+    	}
+    	
+    	d = r;
+    	
+    	//give the multiplicative inverse of a, which is t, since a >=b.
+    	return s;
+    	
+    }
+    
     public Result divide(List<Integer> f, List<Integer> g, int mod) {
         // For safety make unmodifiable
         f = Collections.unmodifiableList(f);
