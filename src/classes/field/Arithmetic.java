@@ -44,6 +44,8 @@ public class Arithmetic {
     }
     
     public List<Integer> div(List<Integer> f, List<Integer> g, List<Integer> characteristic, int mod){
-        return multiplier.multiply(f, inverse.findInverse(g, characteristic, mod), mod);
+        List<Integer> ans = multiplier.multiply(f, inverse.findInverse(g, characteristic, mod), mod);
+        ans = Polynomial.polynomialReduce(ans, characteristic, mod);
+        return ans;
     }
 }

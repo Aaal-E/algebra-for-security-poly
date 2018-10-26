@@ -11,10 +11,10 @@ public class Irreducible {
     Adder adder = new Adder();
     /*
       Input: polynomial f in Fq[X] of degree n > 1
-    Output: ‘true’ if f is irreducible, ‘else’
+    Output: ï¿½trueï¿½ if f is irreducible, ï¿½elseï¿½
     Step 1: t = 1
     Step 2: while gcd(f, X^q^t - X) = 1 do t = t + 1
-    Step 3: if t = n then output ‘true’ else output ‘false’
+    Step 3: if t = n then output ï¿½trueï¿½ else output ï¿½falseï¿½
      */
     public boolean isIrreducible(List<Integer> f, int mod) {
         int t = 1;
@@ -24,7 +24,7 @@ public class Irreducible {
             temp.add(0);
         
         temp = adder.subtract(temp, X, mod);
-        while (euclid.euclid(f, temp, mod).d != Polynomial.ONE) {
+        while (euclid.euclid(f, temp, mod).d.equals(Polynomial.ONE)) {
             t = t+1;
             temp.clear();
             for(int i = 0; i<Math.pow(mod, t); i++)

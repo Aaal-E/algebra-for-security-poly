@@ -1,5 +1,7 @@
 package classes;
 
+import classes.polynomial.Divider;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -65,6 +67,12 @@ public class Polynomial {
 
         // Return
         return polynomial;
+    }
+
+
+    public static List<Integer> polynomialReduce(List<Integer> polynomial, List<Integer> characteristic, int integerMod) {
+        Divider.Result result = new Divider().divide(polynomial, characteristic, integerMod);
+        return result.r;
     }
 
     public static boolean isZero(List<Integer> polynomial) {
