@@ -36,11 +36,11 @@ public class Primitive {
         	//getting  how many prime divisors we have to divide by
     	
     	int i = 1, index = 0;
-        while ( calc.pow(a, (order-1)/primeDivisors.get(index++), characteristic, mod).equals(Polynomial.ONE) && (i<=primeDivisors.size()) /*what is this n???*/){
+        while ( (!calc.pow(a, (order-1)/primeDivisors.get(index++), characteristic, mod).equals(Polynomial.ONE)) && (i<=primeDivisors.size()) /*what is this n???*/){
             i++;
         }
         
-        //was a, a.size() -2 , but doesn't work.
+        //was a, a.size() -2 , but doesn't work. also the ! wasn't there initially. 
         return i>primeDivisors.size();
     }
     
