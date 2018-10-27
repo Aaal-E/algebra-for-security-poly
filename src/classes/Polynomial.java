@@ -5,6 +5,7 @@ import classes.polynomial.Divider;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Helper class with static methods for polynomials.
@@ -27,14 +28,22 @@ public class Polynomial {
         }
     }
 
+    /**
+     * Returns a random polynomial of given degree.
+     */
     public static List<Integer> random(int degree, int mod) {
         List<Integer> result = new ArrayList<>();
+        Random random = new Random();
 
-        for (int i = 0; i < degree + 1; i++) {
-            result.add((int) Math.floor((Math.random() * mod)));
+        for (int i = 0; i < degree; i++) {
+            // Generate a random coefficient between 0 (inclusive) and mod (exclusive)
+            int coefficient = random.nextInt(mod);
+            result.add(coefficient);
         }
-//        if(result.get(result.size()-1) == 0)
-//            result.set(result.size()-1, 1);
+
+        // Make sure that the leading coefficient is random between 1 (inclusive) and mod (exclusive)
+        result.add(random.nextInt(mod - 1) + 1);
+
         return result;
     }
 

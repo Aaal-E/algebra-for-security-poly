@@ -181,17 +181,23 @@ public class ProgramController {
                 break;
 
             case "euclid-poly":
-                
-                Result r = new Euclid().euclid(f,g,mod);
-                answA = Formatter.toString(r.a);
-                answB = Formatter.toString(r.b);
-                answD = Formatter.toString(r.d);
+
+                Result r = new Euclid().euclid(f, g, mod);
+                if (r == null) {
+                    answA = "ERROR";
+                    answB = "ERROR";
+                    answD = "ERROR";
+                } else {
+                    answA = Formatter.toString(r.a);
+                    answB = Formatter.toString(r.b);
+                    answD = Formatter.toString(r.d);
+                }
                 break;
             case "equals-poly-mod":
-                answer = (Field.polyequals(f,g,h,mod))? "TRUE":"FALSE";
+                answer = (Field.polyEquals(f, g, h, mod)) ? "TRUE" : "FALSE";
                 break;
             case "irreducible":
-                answer = (new Irreducible().isIrreducible(f, mod))? "TRUE":"FALSE";
+                answer = (new Irreducible().isIrreducible(f, mod)) ? "TRUE" : "FALSE";
                 break;
             case "find-irred":
                 answer = Formatter.toString(new Irreducible().findIrreducible(deg, mod));
@@ -221,10 +227,10 @@ public class ProgramController {
                 answer = Formatter.toString(new Arithmetic().div(a, b, modPoly, mod));
                 break;
             case "equals-field":
-                answer = (Field.polyequals(a,b,modPoly,mod))? "TRUE":"FALSE";
+                answer = (Field.polyEquals(a, b, modPoly, mod)) ? "TRUE" : "FALSE";
                 break;
             case "primitive":
-                answer = (new Primitive().isPrimitive(a, modPoly, mod))? "TRUE":"FALSE";
+                answer = (new Primitive().isPrimitive(a, modPoly, mod)) ? "TRUE" : "FALSE";
                 break;
             case "find-prim":
                 answer = Formatter.toString(new Primitive().findPrimitive(modPoly, mod));
@@ -272,7 +278,7 @@ public class ProgramController {
 
 
         // Process arguments
-        for (int i=0; i<args.length; i++) {
+        for (int i = 0; i < args.length; i++) {
             String arg = args[i];
             if (arg.equals("-h")) {
                 // Print help text
