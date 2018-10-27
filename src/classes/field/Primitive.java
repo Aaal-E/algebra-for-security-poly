@@ -4,6 +4,7 @@ import java.util.List;
 
 import classes.Field;
 import classes.Polynomial;
+import classes.polynomial.Irreducible;
 
 public class Primitive {
     /*Input: Field F of order q and prime divisors p1, . . . pk of q - 1 and a in F
@@ -41,7 +42,10 @@ public class Primitive {
     }
     
     public List<Integer> findPrimitive(List<Integer> characteristic, int mod){
-        int degree = characteristic.size();
+        int degree = Polynomial.degree(characteristic);
+        
+        if (! new Irreducible().isIrreducible(characteristic, mod))
+        	return null;        
         //for the random part, we have to account for 0, when you generate numbers
         // (as in skip it)
         
