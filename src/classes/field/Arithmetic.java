@@ -28,8 +28,7 @@ public class Arithmetic {
     }
     
     public List<Integer> subtract(List<Integer> f, List<Integer> g, List<Integer> characteristic, int mod) {
-        List<Integer> result = new ArrayList<>();
-        result = adder.subtract(f, g, mod);
+        List<Integer> result = adder.subtract(f, g, mod);
         result = Field.reduce(result, characteristic, mod);
         return result;
     }
@@ -45,7 +44,7 @@ public class Arithmetic {
     
     public List<Integer> div(List<Integer> f, List<Integer> g, List<Integer> characteristic, int mod){
         List<Integer> ans = multiplier.multiply(f, inverse.findInverse(g, characteristic, mod), mod);
-        ans = Polynomial.polynomialReduce(ans, characteristic, mod);
+        ans = Field.reduce(ans, characteristic, mod);
         return ans;
     }
 }

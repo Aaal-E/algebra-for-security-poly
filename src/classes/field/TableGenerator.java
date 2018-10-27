@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import classes.Field;
 import classes.Polynomial;
 import classes.polynomial.Adder;
 import classes.polynomial.Divider;
@@ -39,7 +40,7 @@ public class TableGenerator {
                 // Multiply
                 List<Integer> cell = multiplier.multiply(elements.get(i), elements.get(j), mod);
                 // Reduce
-                cell = Polynomial.polynomialReduce(cell, characteristic, mod);
+                cell = Field.reduce(cell, characteristic, mod);
                 // Store
                 row.add(cell);
             }
