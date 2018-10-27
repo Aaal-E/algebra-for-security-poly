@@ -17,6 +17,8 @@ public class Inverse {
             return null;
         }
 
+
+
         Euclid.Result result = euclid.euclid(element, characteristic, mod);
         List<Integer> temp = new ArrayList<>();
         List<Integer> modlist = new ArrayList<Integer>(Arrays.asList(mod));

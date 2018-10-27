@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import classes.Field;
+import classes.Logger;
 import classes.Polynomial;
 import classes.polynomial.*;
 
@@ -14,7 +15,7 @@ public class Arithmetic {
 
     
     public List<Integer> multiply(List<Integer> f, List<Integer> g, List<Integer> characteristic, int mod) {
-        List<Integer> result = new ArrayList<>();
+        List<Integer> result;
         result = multiplier.multiply(f, g, mod);
         result = Field.reduce(result, characteristic, mod);
         return result;
@@ -36,9 +37,10 @@ public class Arithmetic {
     public List<Integer> pow(List<Integer> f, int pow, List<Integer> characteristic, int mod) {
         List<Integer> result = new ArrayList<>(Polynomial.ONE);
         for(int i = 0; i<pow; i++) {
-        result = multiplier.multiply(result, f, mod);
-        result = Field.reduce(result, characteristic, mod);
+            result = multiply(result, f, characteristic, mod);
         }
+        Polynomial.checkRepresentation(result);
+        Logger.log("pow result: %s", result);
         return result;
     }
     

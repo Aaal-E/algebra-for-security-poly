@@ -64,6 +64,7 @@ public class ProgramController {
     private void process(Command command, IO io) {
         switch (command.command) {
             case "mod":
+                // Todo: throw exception when mod is prime
                 mod = Integer.parseInt(command.argument);
 
                 // New computation, resetting all variables

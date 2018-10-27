@@ -466,13 +466,6 @@
 ################
 # Check irreducibility for a polynomial
 
-
-[mod] 28
-[irreducible]
-[f] {1,23,18}
-# expect [answer] FALSE
-[answer] FALSE
-
 [mod] 3
 [irreducible]
 [f] {1,1,1}
@@ -481,7 +474,7 @@
 [mod] 2
 [irreducible]
 [f] {1,1,1}
-#[answer] TRUE
+[answer] TRUE
 
 [mod] 7
 [irreducible]
@@ -543,13 +536,13 @@
 [mod-poly]	{1,0,2}
 [display-field]
 [a]		{1,0,0}
-[answer]	3
+[answer] 3
 
 [mod]		7
 [mod-poly]	{2,-2}
 [display-field]
 [a]		{1,1,1}
-[answer]	3
+[answer] 3
 
 ################
 # Addition
@@ -602,13 +595,13 @@
 [mod-poly]	{1,1,1}
 [inverse-field]
 [a]		{1,0}
-[answer]	X+1
+[answer] X+1
 
 [mod]		2
 [mod-poly]	{1,1,0}
 [inverse-field]
 [a]		{1,0}
-[answer]	ERROR
+[answer] ERROR
 
 ################
 # Division
@@ -618,21 +611,21 @@
 [division-field]
 [a]		{1,0}
 [b]		{1,0}
-[answer]	1
+[answer] 1
 
 [mod]		2
 [mod-poly]	{1,1,1}
 [division-field]
 [a]		{1}
 [b]		{1,0}
-[answer]	X+1
+[answer] X+1
 
 [mod]		2
 [mod-poly]	{1,1,1}
 [division-field]
 [a]		{1}
 [b]		{}
-[answer]	ERROR
+[answer] ERROR
 
 ################
 # Equality
@@ -642,7 +635,7 @@
 [equals-field]
 [a]		{1,0,0}
 [b]		{3}
-[answer]	TRUE
+[answer] TRUE
 
 ################
 # Primitive
@@ -651,34 +644,52 @@
 [mod-poly]	{1,0,0,2}
 [primitive]
 [a]		{1,0}
-[answer] 	FALSE
+[answer] FALSE
 
 [mod]		7
 [mod-poly]	{1,0,0,2}
 [primitive]
 [a]		{1,0,1}
-[answer] 	TRUE
+[answer] TRUE
+
+[mod] 3
+[mod-poly] {1,0,1}
+[primitive]
+[a] {1,1}
+[answer] TRUE
+
+[mod] 3
+[mod-poly] {1,0,1}
+[primitive]
+[a] {1}
+[answer] FALSE
+
+[mod] 3
+[mod-poly] {1,0,1}
+[primitive]
+[a] {-1,-1}
+[answer] TRUE
+
+[mod] 3
+[mod-poly] {1,0,1}
+[primitive]
+[a] {-1,0}
+[answer] FALSE
 
 ################
 # Find primitive
 
 [mod]		7
-[mod-poly]	{1,0,1}
+[mod-poly]	{1,0,6}
 [find-prim]
-[answer] 	ERROR
-
-[mod] 7
-[mod-poly] {1,0,6}
-[find-prim]
-# expect [answer] (X+1)(X+6)
-[answer] .
+[answer] ERROR
 
 [mod]		7
 [mod-poly]	{1,0,1}
 [find-prim]
-[answer] 	2X+6
+[answer] 2X+6
 
 [mod]		7
 [mod-poly]	{1,0,1}
 [find-prim]
-[answer] 	X+2
+[answer] X+2

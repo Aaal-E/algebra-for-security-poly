@@ -29,7 +29,7 @@ public class Polynomial {
     }
 
     /**
-     * Returns a random polynomial of given degree.
+     * Returns a random monic polynomial of given degree.
      */
     public static List<Integer> random(int degree, int mod) {
         List<Integer> result = new ArrayList<>();
@@ -41,8 +41,8 @@ public class Polynomial {
             result.add(coefficient);
         }
 
-        // Make sure that the leading coefficient is random between 1 (inclusive) and mod (exclusive)
-        result.add(random.nextInt(mod - 1) + 1);
+        // Make monic
+        result.add(1);
 
         return result;
     }
@@ -77,7 +77,7 @@ public class Polynomial {
     }
 
 
-    private static void checkRepresentation(List<Integer> polynomial) {
+    public static void checkRepresentation(List<Integer> polynomial) {
         // Check if the array is not empty
         if (polynomial.isEmpty()) {
             throw new IllegalStateException("Polynomial representation invalid (empty array).");
