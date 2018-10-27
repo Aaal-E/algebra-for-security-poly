@@ -1,5 +1,6 @@
 package classes.field;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import classes.Field;
@@ -20,8 +21,8 @@ public class Primitive {
         
     	
     	int order = (int) (Math.pow(mod, characteristic.size()) );
-    	int primeDivisors = 0;
         int divisorCount = 0;
+        List<Integer> primeDivisors = new ArrayList<>();
         
     	for ( int j = 1; j <= (order-1)/2; j++) {
         	divisorCount = 0;
@@ -30,15 +31,17 @@ public class Primitive {
         		if( j % d == 0)
         		  divisorCount ++;
         	if(divisorCount == 1)
-        		primeDivisors ++;
+        		primeDivisors.add(j);
         }
         	//getting  how many prime divisors we have to divide by
     	
-    	int i = 1;
-        while ( calc.pow(a, a.size()-2, characteristic, mod).equals(Polynomial.ONE) && (i<=primeDivisors) /*what is this n???*/){
+    	int i = 1, index = 0;
+        while ( calc.pow(a, (order-1)/primeDivisors.get(index++), characteristic, mod).equals(Polynomial.ONE) && (i<=primeDivisors.size()) /*what is this n???*/){
             i++;
         }
-        return i>primeDivisors;
+        
+        //was a, a.size() -2 , but doesn't work.
+        return i>primeDivisors.size();
     }
     
     public List<Integer> findPrimitive(List<Integer> characteristic, int mod){
@@ -46,10 +49,7 @@ public class Primitive {
         
         if (! new Irreducible().isIrreducible(characteristic, mod))
         	return null;        
-        //for the random part, we have to account for 0, when you generate numbers
-        // (as in skip it)
-        
-        //TODO check the polynomial we get: if it is redducible, return error 
+  
         // ->look for similar "error" messages in other methods
         List<Integer> a = Polynomial.random(degree, mod);
         Field.reduce(a, characteristic, mod);
