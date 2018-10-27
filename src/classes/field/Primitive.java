@@ -26,8 +26,8 @@ public class Primitive {
         
     	for ( int j = 1; j <= (order-1)/2; j++) {
         	divisorCount = 0;
-        	
-        	for ( int d = 1; d <= j/2; d++)
+        	if( j % order - 1 == 0)
+        	 for ( int d = 1; d <= j/2; d++)
         		if( j % d == 0)
         		  divisorCount ++;
         	if(divisorCount == 1)
