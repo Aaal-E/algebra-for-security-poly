@@ -17,6 +17,8 @@ public class Irreducible {
     Step 3: if t = n then output �true� else output �false�
      */
     public boolean isIrreducible(List<Integer> f, int mod) {
+        // Todo fix
+        /*
         int t = 1;
         List<Integer> temp = new ArrayList<>();
         List<Integer> X = new ArrayList<>(Arrays.asList(1,0)); 
@@ -32,6 +34,8 @@ public class Irreducible {
             temp = adder.subtract(temp, X, mod);      
         }
         return t == f.size()-1;
+        */
+        return false;
     }
 
 

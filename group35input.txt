@@ -307,17 +307,19 @@
 ################
 # Euclid's Extended Algorithm
 
-# 1/1
+# 1, 1
 [mod] 2
 [euclid-poly]
 [f] {1}
 [g] {1}
+# expect [answ-a] 0
 [answ-a] .
+# expect [answ-b] 1
 [answ-b] .
 # expect [answ-d] 1
 [answ-d] .
 
-# 0/1
+# 0, 1
 [mod] 2
 [euclid-poly]
 [f] {0}
@@ -325,7 +327,7 @@
 # expect [answ-d] 1
 [answ-d] .
 
-# X/X
+# X, X
 [mod] 2
 [euclid-poly]
 [f] {1,0}
@@ -333,7 +335,9 @@
 # expect [answ-d] X
 [answ-d] X
 
-# 2X^2+2 / (X+1)
+
+
+# 2X^2+2, (X+1)
 [mod] 7
 [euclid-poly]
 [f] {2,0,2}
@@ -377,7 +381,7 @@
 [euclid-poly]
 [f] {1,0,1}
 [g] {1,0,0,0}
-# expect [answ-d] X
+# expect [answ-d] 1
 [answ-d] .
 
 # X^2+1, X^3+
@@ -385,7 +389,7 @@
 [euclid-poly]
 [f] {1,0,1}
 [g] {1,0,0,1}
-# expect [answ-d] X
+# expect [answ-d] 1
 [answ-d] .
 
 [mod] 7
@@ -395,6 +399,49 @@
 [answ-a] 5
 [answ-b] X+2
 [answ-d] 1
+
+# Given example cases
+
+[mod] 7
+[euclid-poly]
+[f] {1,1,1}
+[g] {2,-2}
+[answ-a] 5
+[answ-b] X+2
+[answ-d] 1
+
+[mod] 7
+[euclid-poly]
+[f] {1,0,1}
+[g] {1,0,0,1}
+[answ-a] 3X^2+3X+4
+[answ-b] 4X+4
+[answ-d] 1
+
+[mod] 2
+[euclid-poly]
+[f] {1,0,1}
+[g] {1,0,0,1}
+[answ-a] X
+[answ-b] 1
+[answ-d] X+1
+
+[mod] 7
+[euclid-poly]
+[f] {1,1,1}
+[g] {0}
+[answ-a] 1
+[answ-b] 0
+[answ-d] X^2+X+1
+
+[mod] 7
+[euclid-poly]
+[f] {2,2,2}
+[g] {0}
+[answ-a] 4
+[answ-b] 0
+[answ-d] X^2+X+1
+
 
 
 ################

@@ -1,44 +1,64 @@
 package classes.polynomial;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import classes.Polynomial;
 
 public class Euclid {
 
+    /**
+     * Extended Euclidian Algorithm for polynomials.
+     * <p>
+     * Source: Hans Cuypers, Hans Sterk, Rob Eggermont, Algebra for Security Algorithm 1.2.11
+     */
     public Result euclid(List<Integer> f, List<Integer> g, int mod) {
-        List<Integer> d;
-        List<Integer> a;
-        List<Integer> b;
-        List<Integer> f_ = new ArrayList<>(f);
-        List<Integer> g_ = new ArrayList<>(g);
-        List<Integer> a1 = Polynomial.ONE;
-        List<Integer> b1 = Polynomial.ZERO;
-        List<Integer> a2 = Polynomial.ZERO;
-        List<Integer> b2 = Polynomial.ONE;
-        List<Integer> a3;
-        List<Integer> b3;
-        
+        // Reduce f and g (this will also copy)!
+        f = Polynomial.reduce(f, mod);
+        g = Polynomial.reduce(g, mod);
+        List<Integer> x = Polynomial.ONE;
+        List<Integer> y = Polynomial.ZERO;
+        List<Integer> u = Polynomial.ZERO;
+        List<Integer> v = Polynomial.ONE;
+
         Divider divider = new Divider();
         Adder adder = new Adder();
         Multiplier multiplier = new Multiplier();
 
         // Do algorithm
-        while (!Polynomial.isZero(g_)) {
-            Divider.Result temp = divider.divide(f_, g_, mod);
-            f_ = g_;
-            g_ = temp.r;
-            a3 = adder.subtract(a1, multiplier.multiply(temp.q, a2, mod), mod);
-            b3 = adder.subtract(b1, multiplier.multiply(temp.q, b2, mod), mod);
-            a1 = a2;
-            b1 = b2;
-            a2 = a3;
-            b2 = b3;
+        while (!Polynomial.isZero(g)) {
+            List<Integer> q, xP, yP;
+
+            Divider.Result temp = divider.divide(f, g, mod);
+
+            q = temp.q;
+            f = g;
+            g = temp.r;
+            xP = x;
+            yP = y;
+            x = u;
+            y = v;
+            u = adder.subtract(xP, multiplier.multiply(q, u, mod), mod);
+            v = adder.subtract(yP, multiplier.multiply(q, v, mod), mod);
         }
-        d = Polynomial.reduce(f_, mod);
-        a = Polynomial.reduce(a1, mod);
-        b = Polynomial.reduce(b1, mod);
+
+        // (No need to reduce here since that already happened during the algorithm.)
+        List<Integer> d = f;
+        List<Integer> a = x;
+        List<Integer> b = y;
+
+        // Divide d, a and b with the leading coefficient of d.
+        // This ensures that the leading coefficient of the gcd is one, which is the gcd that is requested.
+        // This is done using the divide algorithm because that one correctly handles the multiplicative inverse.
+        // We also could've directly multiplied each coefficient with the multiplicative inverse and reduce the result.
+        int divideBy = Polynomial.leadingCoefficient(d);
+        if (divideBy != 0 && divideBy != 1) {
+            List<Integer> divideByPolynomial = Collections.singletonList(divideBy);
+            d = divider.divide(d, divideByPolynomial, mod).q;
+            a = divider.divide(a, divideByPolynomial, mod).q;
+            b = divider.divide(b, divideByPolynomial, mod).q;
+        }
 
         // Return result
         return new Result(d, a, b);

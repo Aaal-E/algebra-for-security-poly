@@ -14,24 +14,14 @@ public class Polynomial {
     public static final List<Integer> ONE = Arrays.asList(1);
 
     /**
-     * Creates a polynomial from a collection of integers.
-     * NOTE: the first given integer should have the highest coefficient! I.e. 2X+1 is input as 2, 1.
-     */
-//    public static List<Integer> fromInts(int... polynomial) {
-//        List<Integer> poly = new ArrayList<>(polynomial);
-//        return Arrays.asList()
-//        return null;
-//    }
-
-    /**
-     * Removes leading zeros AND fixes representation.
+     * Removes leading zeros in-place.
      */
     public static void removeLeadingZeros(List<Integer> polynomial) {
         // Remove leading zeros
         while (polynomial.size() > 1 && polynomial.get(polynomial.size() - 1) == 0) {
             polynomial.remove(polynomial.size() - 1);
         }
-        // Add zero element
+        // Add zero element if array is empty
         if (polynomial.isEmpty()) {
             polynomial.add(0);
         }
@@ -69,15 +59,47 @@ public class Polynomial {
         return polynomial;
     }
 
+    /**
+     * Checks if a polynomial is equal to zero.
+     */
     public static boolean isZero(List<Integer> polynomial) {
         checkRepresentation(polynomial);
         return polynomial.equals(ZERO);
     }
 
 
-    public static void checkRepresentation(List<Integer> polynomial) {
-        if (polynomial.size() == 0) {
-            throw new IllegalStateException("THIS IS NOT ALLOWED");
+    private static void checkRepresentation(List<Integer> polynomial) {
+        // Check if the array is not empty
+        if (polynomial.isEmpty()) {
+            throw new IllegalStateException("Polynomial representation invalid (empty array).");
+        }
+        // Check if it is doesn't have leading zeros
+        if (polynomial.size() > 1 && polynomial.get(polynomial.size() - 1) == 0) {
+            throw new IllegalStateException("Polynomial representation invalid (it has leading zeros).");
+        }
+    }
+
+    /**
+     * Returns the degree for a polynomial. Returns -1 for the zero polynomial.
+     */
+    public static int degree(List<Integer> polynomial) {
+        checkRepresentation(polynomial);
+
+        if (Polynomial.isZero(polynomial)) {
+            return -1;
+        } else {
+            return polynomial.size() - 1;
+        }
+    }
+
+    public static int leadingCoefficient(List<Integer> polynomial) {
+        checkRepresentation(polynomial);
+
+        int degree = degree(polynomial);
+        if (degree == -1) {
+            return 0;
+        } else {
+            return polynomial.get(degree);
         }
     }
 }

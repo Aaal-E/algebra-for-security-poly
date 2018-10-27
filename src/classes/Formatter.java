@@ -4,6 +4,9 @@ import java.util.*;
 
 public class Formatter {
     public static String toString(List<Integer> poly) {
+        // Remove leading zeros to be sure
+        Polynomial.removeLeadingZeros(poly);
+
         if (Polynomial.isZero(poly)) {
             return "0";
         }
@@ -41,12 +44,11 @@ public class Formatter {
         }
 
 
-
         return result.toString();
     }
 
     public static List<Integer> toPoly(String str) {
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result = new ArrayList<>();
         if (str.contains("{")) {
             str = str.substring(1, str.length() - 1);
             while (!str.equals("")) {
@@ -136,6 +138,7 @@ public class Formatter {
                 result.set(0, Integer.parseInt(str));
             }
         }
+        Polynomial.removeLeadingZeros(result);
         return result;
     }
 
