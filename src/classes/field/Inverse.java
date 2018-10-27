@@ -10,21 +10,15 @@ import java.util.List;
 
 public class Inverse {
     Euclid euclid = new Euclid();
-    Multiplier multiplier = new Multiplier();
 
     public List<Integer> findInverse(List<Integer> element, List<Integer> characteristic, int mod) {
-        if (Polynomial.isZero(element)) {
+        Euclid.Result eea = euclid.euclid(element, characteristic, mod);
+
+        if (eea.d.equals(Polynomial.ONE)) {
+            return eea.a;
+        } else {
             return null;
         }
-
-
-
-        Euclid.Result result = euclid.euclid(element, characteristic, mod);
-        List<Integer> temp = new ArrayList<>();
-        List<Integer> modlist = new ArrayList<Integer>(Arrays.asList(mod));
-        temp = euclid.euclid(result.a, modlist, mod).a;
-
-        return multiplier.multiply(result.a, temp, mod);
     }
 
 }
