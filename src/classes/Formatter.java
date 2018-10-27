@@ -4,6 +4,10 @@ import java.util.*;
 
 public class Formatter {
     public static String toString(List<Integer> poly) {
+        if (poly == null) {
+            return "ERROR";
+        }
+
         // Remove leading zeros to be sure
         Polynomial.removeLeadingZeros(poly);
 

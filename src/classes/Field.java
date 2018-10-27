@@ -14,7 +14,7 @@ public class Field {
         return polynomial;
     }
 
-    public static boolean polyequals(List<Integer> f, List<Integer> g, List<Integer> characteristic, int mod) {
+    public static boolean polyEquals(List<Integer> f, List<Integer> g, List<Integer> characteristic, int mod) {
         return reduce(f, characteristic, mod).equals(reduce(g, characteristic, mod));
     }
 

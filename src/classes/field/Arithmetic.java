@@ -43,6 +43,10 @@ public class Arithmetic {
     }
     
     public List<Integer> div(List<Integer> f, List<Integer> g, List<Integer> characteristic, int mod){
+        if (Polynomial.isZero(g)) {
+            return null;
+        }
+
         List<Integer> ans = multiplier.multiply(f, inverse.findInverse(g, characteristic, mod), mod);
         ans = Field.reduce(ans, characteristic, mod);
         return ans;

@@ -17,6 +17,12 @@ public class Euclid {
         // Reduce f and g (this will also copy)!
         f = Polynomial.reduce(f, mod);
         g = Polynomial.reduce(g, mod);
+
+        if (Polynomial.isZero(f) && Polynomial.isZero(g)) {
+            return null;
+        }
+
+
         List<Integer> x = Polynomial.ONE;
         List<Integer> y = Polynomial.ZERO;
         List<Integer> u = Polynomial.ZERO;
