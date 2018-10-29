@@ -4,12 +4,8 @@ import classes.field.Arithmetic;
 import classes.field.Inverse;
 import classes.field.Primitive;
 import classes.field.TableGenerator;
-import classes.polynomial.Adder;
-import classes.polynomial.Divider;
-import classes.polynomial.Euclid;
+import classes.polynomial.*;
 import classes.polynomial.Euclid.Result;
-import classes.polynomial.Irreducible;
-import classes.polynomial.Multiplier;
 
 import java.io.*;
 import java.util.List;
@@ -195,7 +191,7 @@ public class ProgramController {
                 }
                 break;
             case "equals-poly-mod":
-                answer = (Field.polyEquals(f, g, h, mod)) ? "TRUE" : "FALSE";
+                answer = Equality.equals(f, g, h, mod) ? "TRUE" : "FALSE";
                 break;
             case "irreducible":
                 answer = (new Irreducible().isIrreducible(f, mod)) ? "TRUE" : "FALSE";
